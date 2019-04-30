@@ -1,0 +1,6 @@
+% File:  grammar.pl
+%   - grammar for Minesweeper game
+
+sentence(quit) --> [quit].
+sentence([X, Y]) --> [probe], [X], [Y], {number(X), number(Y)}.
+

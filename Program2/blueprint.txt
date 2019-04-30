@@ -1,0 +1,69 @@
+NOTE: Must compile with  'g++ -std=c++11' 
+g++ -std=c++11 -c seafood.cc
+g++ -o seafood seafood.o
+
+= = ASSIGNMENT 2 BLUEPRINT = =
+
+- CLASS SeafoodBox
+    * Variables:
+        ~ Quantity of a seafood
+        ~ Expiration date (taken as mm/dd/yyyy, but can convert to yyyy/mm/dd for simplicity, string type?)
+        ~ isOpen (boolean, false by default)
+    * subclass shrimp
+        ~ Quantity 50 
+    * subclass lobster
+        ~ Quantity 4
+    * subclass crab
+        ~ Quantity 6
+    * subclass swordfish
+        ~ Quantity 8 
+        
+- CLASS CustomerRequest (not sure if this is the best way to treat a customer request -- we'll see.)
+    * Variables:
+        ~ Type of seafood
+        ~ Quantity of seafood
+        ~ Expiration date (taken as mm/dd/yyyy, but can convert to yyyy/mm/dd for simplicity, string type?)
+        
+- FUNCTION date conversion
+    * might need this??
+    
+- FUNCTION sell fish
+    * decrease quantity of food in box
+    * IF box is closed:
+        ~ open box (isOpen == true)
+    * IF amount to be sold exceeds amount available in box:
+        ~ discard box and take then next highest one in queue
+        ~ decrement quantity of that box
+        ~ IF no boxes of requested type available
+            + put requested purchase in queue
+        
+- FUNCTION stock fish
+    * Create a SeafoodBox object of given seafood type, queue object into selling queue
+
+- PRIORITY QUEUE ordered from most --> least important
+    Selling Queue: (queue of seafood subclasses, one for each type of seafood)
+        1. Opened Box (always outprioritizes dates)
+        2. Older Box ("lower" date)
+        3. Newer Box ("greater" date)
+    Unsatisfied Request Queue: (queue of CustomerRequests, will  will stack on top of one another as each unsatisfied request occurs)
+        1. Oldest request
+        2. Newest request
+
+- INPUTS in order
+    * Event/Action (stock or buy)
+    * Expiration Date (mm/dd/yyyy)
+    * Type of seafood (shrimp, lobster...)
+    * Quantity of seadfood
+    
+- MAIN
+    * EVENT restocking
+        ~ read from "stock" command
+        ~ run FUNCTION stock fish
+        * EVENT previous request fulfilled
+            + caused by the "stock" event (no input)
+    * EVENT customer makes purchase
+        ~ read from "buy" command
+        ~ run FUNCTION sell fish 
+            * EVENT failed purchase
+                + caused by the "buy" event (no input), see sell fish function
+

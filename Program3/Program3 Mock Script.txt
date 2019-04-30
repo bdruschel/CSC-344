@@ -1,0 +1,8 @@
+== MOCK SCRIPT (copy/replace the first line in the real script with the following text) ==
+* DO NOT FORGET TO REPLACE THE LAST LINE, TOO. MAKE SURE BOTH DATES ARE CORRECTLY MODIFIED
+
+Script started on Mon, Nov 21, 2016  1:15:24 PM
+
+[script mumbo jumbo]
+
+Script done on Mon, Nov 21, 2016  1:21:29 PM

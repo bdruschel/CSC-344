@@ -1,0 +1,47 @@
+Script started on Thu 08 Dec 2016 04:37:34 PM EST
+[4mpi[24m:[1m~/Desktop/Program4[0m> cat D.hs
+-- |  Brandon Druschel
+-- |  Assignment 4d: factors
+-- |  Due Date: 12/8/16 
+-- The function 'factors' takes an Int 'n' and returns a list of
+-- all of the Int's prime factors. 
+--
+-- The algorithm for generating the list of factors was borrowed from here:
+-- http://stackoverflow.com/questions/21276844/prime-factors-in-haskell
+--
+-- Input: factors [Int]
+-- Output: List of factors that apply to the given Int.
+
+module D (can_divide, factors) where
+   -- Can the number be evenly divided by n? 
+   can_divide :: Int -> Int -> Bool
+   -- can_divide n1 n2 = n1/n2 == fromInteger (round(n1/n2))
+      -- It turns out that you cannot use the '/' operator for Int's. 
+      -- 'div' cannot return a float, so 'mod' is used instead
+   can_divide n1 n2 = (n1 `mod` n2) == 0
+   
+   factors :: Int -> [Int]
+   factors 0 = []
+   factors 1 = []
+   factors n
+      | f == [] = [n]
+      | otherwise = f ++ factors (div n (head f))
+      where f = take 1 $ filter (\x -> (can_divide n x) == True) [2 .. n-1][4mpi[24m:[1m~/Desktop/Program4[0m> ghci
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+[?1h=Prelude> :load D.hs
+[?1l>[1 of 1] Compiling D                ( D.hs, interpreted )
+Ok, modules loaded: D.
+[?1h=*D> factors 16
+[?1l>[2,2,2,2]
+[?1h=*D> factors 29
+[?1l>[29]
+[?1h=*D> factors 120
+[?1l>[2,2,2,3,5]
+[?1h=*D> factors 74
+[?1l>[2,37]
+[?1h=*D> :quit
+[?1l>Leaving GHCi.
+[4mpi[24m:[1m~/Desktop/Program4[0m> exit
+exit
+
+Script done on Thu 08 Dec 2016 04:38:48 PM EST

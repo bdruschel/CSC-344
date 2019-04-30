@@ -1,0 +1,41 @@
+Script started on Thu 08 Dec 2016 04:33:57 PM EST
+[4mpi[24m:[1m~/Desktop/Program4[0m> cat B.hs
+-- |  Brandon Druschel
+-- |  Assignment 4b: dup
+-- |  Due Date: 12/8/16
+-- The function 'dup' iterates through a input string 's'
+-- and duplicates every instance of the input char 'c'.
+--
+-- The main exists only for testing purposes. 
+--
+-- The concatMap idea was borrowed from this page:
+-- https://goo.gl/lVhC13
+--
+-- Input: dup [Char] [String]
+-- Output: String with the given char duplicated.
+
+module Main where
+   dup :: Char -> [Char] -> [Char]
+   dup c s = concatMap(\x -> if x == c then (replicate 2) x else [x]) s
+
+   main = do
+      let x = dup 's' "This is serious business!"
+      putStrLn $ show $ x
+      let y = dup 'C' "CAPS LOCK IS CRUISE CONTROL FOR COOL"
+      putStrLn $ show $ y
+      let z = dup 'p' "I'm a people pleaser."
+      putStrLn $ show $ z[4mpi[24m:[1m~/Desktop/Program4[0m> ghci
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+[?1h=Prelude> :load B.hs
+[?1l>[1 of 1] Compiling Main             ( B.hs, interpreted )
+Ok, modules loaded: Main.
+[?1h=*Main> main
+[?1l>"Thiss iss sseriouss bussinessss!"
+"CCAPS LOCCK IS CCRUISE CCONTROL FOR CCOOL"
+"I'm a ppeopple ppleaser."
+[?1h=*Main> :quit
+[?1l>Leaving GHCi.
+[4mpi[24m:[1m~/Desktop/Program4[0m> exit
+exit
+
+Script done on Thu 08 Dec 2016 04:34:56 PM EST

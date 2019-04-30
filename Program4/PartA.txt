@@ -1,0 +1,51 @@
+Script started on Thu 08 Dec 2016 04:30:20 PM EST
+[4mpi[24m:[1m~/Desktop/Program4[0m> cat A.hs
+-- |  Brandon Druschel
+-- |  Assignment 4a: irepeat
+-- |  Due Date: 12/8/16
+-- The function 'irepeat' Applies a function 'x' to an element 'y'
+-- a certain 'n' amount of times. doubleMe, brokenRecord, and
+-- fac are all simple functions used for testing irepeat.
+--
+-- 'iterate' was used to generate an infinite list of recursively-
+-- -applied functions. irepeat simply takes the n'th result from
+-- that list. This idea was borrowed from the following page:
+-- http://stackoverflow.com/questions/7423123/how-to-call-the-same-function-n-times
+--
+-- Input: irepeat [function] [element] [Int]
+-- Output: Final element result.
+
+module A (doubleMe, brokenRecord, fac, irepeat) where
+   doubleMe :: Num a => a -> a
+   doubleMe x = x + x
+   
+   brokenRecord :: [a] -> [a]
+   brokenRecord x = x ++ x
+   
+   fac 0 = 1
+   fac n = n * fac (n-1)
+   
+   irepeat :: (a -> a) -> a -> Int -> a
+   irepeat x y n = (iterate x y) !! n[4mpi[24m:[1m~/Desktop/Program4[0m> ghci
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+[?1h=Prelude> :load A.hs
+[?1l>[1 of 1] Compiling A                ( A.hs, interpreted )
+Ok, modules loaded: A.
+[?1h=*A> irepeat doubleMe 2 3
+[?1l>16
+[?1h=*A> irepeat d[KbrokenRecord "LOL" 2
+[?1l>"LOLLOLLOLLOL"
+[?1h=*A> irepeat factor 3 2
+[?1l>
+<interactive>:5:9: Not in scope: ‘factor’
+[?1h=*A> irepeat fac 3 2
+[?1l>720
+[?1h=*A> exit
+[?1l>
+<interactive>:7:1: Not in scope: ‘exit’
+[?1h=*A> :quit
+[?1l>Leaving GHCi.
+[4mpi[24m:[1m~/Desktop/Program4[0m> exit
+exit
+
+Script done on Thu 08 Dec 2016 04:32:41 PM EST

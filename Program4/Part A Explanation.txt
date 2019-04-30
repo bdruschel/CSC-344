@@ -1,0 +1,9 @@
+= = Assignment 4a Explanation = =
+
+a = alpha, b = beta
+irepeat :: (a -> B) -> (n) -> (a -> B)
+                                int
+irepeat :: (a -> a) -> (n) -> (a -> a) <-- THIS SHOULD BE THE FUNCTION'S SIGNATURE
+
+(irepeat sin 3) 3.14
+

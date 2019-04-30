@@ -1,0 +1,7 @@
+Script started on Mon, Nov 21, 2016  1:15:24 PM
+]0;/cygdrive/c/Users/Brandon/Desktop
+[32mBrandon@DESKTOP-5HCPKJM [33m/cygdrive/c/Users/Brandon/Desktop[0m
+$ exit
+exit
+
+Script done on Mon, Nov 21, 2016  1:15:29 PM
